@@ -7,6 +7,13 @@
   <meta name="description" content="Planeje a alimentação da semana de acordo com o que é possível agora." />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .shop-item{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:center;padding:11px 16px}
+    .shop-item label{display:flex;gap:9px;align-items:center;min-width:0}
+    .shop-item.done span{text-decoration:line-through;color:#aaa}
+    .qty-input{width:72px;border:1px solid #d9cbbb;border-radius:9px;background:var(--cream);padding:8px 7px;text-align:center;font-size:12px;font-weight:600;color:var(--ink);outline:0}
+    .qty-input:focus{border-color:var(--terracotta);box-shadow:0 0 0 2px rgba(167,94,71,.12)}
+  </style>
   <title>Cardápio Possível™</title>
 </head>
 <body>
