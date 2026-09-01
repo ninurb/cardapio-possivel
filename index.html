@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#8e4d3b" />
+  <meta name="description" content="Planeje a alimentação da semana de acordo com o que é possível agora." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Cardápio Possível™</title>
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" data-go="home" aria-label="Início"><span class="brand-mark">CP</span><span>Cardápio<br><b>Possível™</b></span></button>
+    <button class="icon-btn" id="installBtn" hidden>Instalar</button>
+  </header>
+
+  <main>
+    <section id="home" class="view active">
+      <div class="hero">
+        <span class="eyebrow">CASA POSSÍVEL™</span>
+        <h1>Como está a<br><em>sua semana?</em></h1>
+        <p>O cardápio se adapta à energia e ao tempo que você tem — sem culpa e sem perfeição.</p>
+      </div>
+      <div class="level-list" id="levelList">
+        <button class="level-card survival" data-level="survival"><span class="level-icon">☕</span><span><small>NÍVEL 1</small><b>Preciso apenas sobreviver</b><i>Rápido, poucos ingredientes e plano de emergência.</i></span><strong>→</strong></button>
+        <button class="level-card maintenance" data-level="maintenance"><span class="level-icon">⌂</span><span><small>NÍVEL 2</small><b>Quero manter a casa funcionando</b><i>Simples, equilibrado e com reaproveitamento.</i></span><strong>→</strong></button>
+        <button class="level-card advance" data-level="advance"><span class="level-icon">✦</span><span><small>NÍVEL 3</small><b>Tenho espaço para avançar</b><i>Mais variedade, pré-preparo e freezer organizado.</i></span><strong>→</strong></button>
+      </div>
+      <p class="microcopy">Sua casa não precisa estar perfeita.<br><b>Precisa estar possível.</b></p>
+    </section>
+
+    <section id="setup" class="view">
+      <button class="back" data-go="home">← Voltar</button>
+      <div class="step-label">SEU PLANO DA SEMANA</div>
+      <h2>Vamos deixar do<br>tamanho da sua vida.</h2>
+      <form id="setupForm">
+        <label class="field">Quantas pessoas comem em casa?<span class="counter"><button type="button" data-count="-1">−</button><output id="peopleOut">4</output><button type="button" data-count="1">+</button></span></label>
+        <fieldset><legend>Quais refeições precisa planejar?</legend><div class="chips"><label><input type="checkbox" name="meals" value="lunch" checked><span>Almoço</span></label><label><input type="checkbox" name="meals" value="dinner" checked><span>Jantar</span></label><label><input type="checkbox" name="meals" value="snack"><span>Lanche</span></label></div></fieldset>
+        <label class="field stacked">Restrições ou preferências?<textarea id="restrictions" placeholder="Ex.: sem lactose, vegetariano, alergia a amendoim..."></textarea></label>
+        <label class="field stacked">O que você já tem em casa?<textarea id="pantry" placeholder="Ex.: arroz, feijão, ovos, frango, cenoura..."></textarea><small>Separe os alimentos com vírgulas.</small></label>
+        <button class="primary" type="submit">Montar meu cardápio <span>→</span></button>
+      </form>
+    </section>
+
+    <section id="plan" class="view">
+      <div class="plan-head"><div><span class="eyebrow" id="planLevel">NÍVEL MANUTENÇÃO</span><h2>Seu cardápio<br>possível</h2></div><button class="round" data-go="setup" aria-label="Editar">✎</button></div>
+      <div class="week-strip" id="weekStrip"></div>
+      <div id="dayPlan"></div>
+      <aside class="tip" id="levelTip"></aside>
+      <button class="outline" id="sharePlan">Compartilhar cardápio no WhatsApp</button>
+    </section>
+
+    <section id="shopping" class="view">
+      <span class="eyebrow">GERADA PELO SEU CARDÁPIO</span><h2>Lista de compras</h2>
+      <div class="progress"><span id="shopProgress"></span></div>
+      <div id="shoppingList"></div>
+      <button class="outline" id="shareShopping">Compartilhar lista no WhatsApp</button>
+    </section>
+
+    <section id="organize" class="view">
+      <span class="eyebrow">MENOS DESPERDÍCIO</span><h2>Organizar a casa</h2>
+      <div class="organize-card use-first"><h3>Use primeiro</h3><p>Itens que precisam entrar nas próximas refeições.</p><form class="inline-form" data-list="useFirst"><input placeholder="Ex.: tomate maduro"><button>+</button></form><ul id="useFirstList"></ul></div>
+      <div class="organize-card freezer"><h3>Mapa do freezer</h3><p>O que está congelado e quantas porções há.</p><form class="inline-form freezer-form" data-list="freezer"><input placeholder="Ex.: feijão"><input type="number" min="1" value="1" aria-label="Porções"><button>+</button></form><ul id="freezerList"></ul></div>
+    </section>
+
+    <section id="impossible" class="view">
+      <span class="eyebrow">PROTOCOLO DE EMERGÊNCIA</span><h2>Dia Impossível™</h2>
+      <div class="emergency"><span>♡</span><h3>Hoje, alimentar já é suficiente.</h3><p>Escolha uma opção simples. Não precisa compensar amanhã.</p></div>
+      <div id="emergencyList" class="emergency-list"></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button data-go="plan"><span>▤</span>Cardápio</button><button data-go="shopping"><span>✓</span>Compras</button><button data-go="organize"><span>⌂</span>Organizar</button><button data-go="impossible"><span>♡</span>Dia impossível</button>
+  </nav>
+  <div id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
